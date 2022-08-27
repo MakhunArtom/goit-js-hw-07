@@ -1,4 +1,42 @@
-import { galleryItems } from './gallery-items.js';
-// Change code below this line
+import { galleryItems } from "./gallery-items.js";
 
-console.log(galleryItems);
+const galleryEl = document.querySelector(".gallery");
+
+// 1 Створити розмітку Галереї +
+
+// 2 Повісити прослуховування на gallery (Делегувати) +
+// 2,1 Заборонити перехід за змовчуванням по link +
+// 2,2 Отримати url модалки +
+
+// 3 Підключити модалку через бібліотеку
+
+// СТВОРЮЮ РОЗМІТКУ .......
+const creatGallery = galleryItems
+  .map(
+    ({ preview, original, description }) =>
+      ` <div class="gallery__item">
+  <a class="gallery__link" href="large-image.jpg">
+    <img
+      class="gallery__image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
+  </a>
+</div> `
+  )
+  .join("");
+
+galleryEl.insertAdjacentHTML("afterbegin", creatGallery);
+
+// Вішаю прослуховування
+galleryEl.addEventListener("click", onClickGalleryImg);
+
+function onClickGalleryImg(e) {
+  e.preventDefault();
+  if (!e.target === "IMG") {
+    return;
+  }
+
+  let UrlImgModal = e.target.dataset.source;
+}
