@@ -36,7 +36,7 @@ galleryEl.addEventListener("click", onClickGalleryImg);
 
 function onClickGalleryImg(e) {
   e.preventDefault();
-  if (!e.target === "IMG") {
+  if (!e.target.classList.contains("gallery__image")) {
     return;
   }
 
