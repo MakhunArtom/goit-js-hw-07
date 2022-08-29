@@ -66,12 +66,14 @@ function showModal(element) {
 // ЗАКРИТТЯ МОДАЛКИ
 // Функція яка чипляє прослуховування при відкритті МОДАЛКИ
 function addClosModalEvent(element) {
-  document.addEventListener("keydown", onTargetKeybordEsc, { once: Boolean });
+  document.addEventListener("keydown", onTargetKeybordEsc);
 
   //Функція що закриває модалку при натискані по ESC
   function onTargetKeybordEsc(event) {
     if (event.code === "Escape") {
       element.close();
+
+      document.removeEventListener("keydown", onTargetKeybordEsc);
     }
   }
 }
