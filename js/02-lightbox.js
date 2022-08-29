@@ -21,7 +21,7 @@ function renderGallery(items) {
 }
 
 // Модалка SimpleLightbox
-galleryEl.addEventListener("click", onClickGalleryImg);
+galleryEl.addEventListener("click", onClickGalleryImg, { once: true });
 
 function onClickGalleryImg(e) {
   e.preventDefault();
@@ -34,6 +34,4 @@ function onClickGalleryImg(e) {
     captionsData: "alt",
     captionDelay: 250,
   });
-
-  galleryEl.removeEventListener("click", onClickGalleryImg);
 }
