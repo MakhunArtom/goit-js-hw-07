@@ -20,6 +20,7 @@ function renderGallery(items) {
   galleryEl.insertAdjacentHTML("afterbegin", creatGallery);
 }
 
+// Модалка SimpleLightbox
 galleryEl.addEventListener("click", onClickGalleryImg);
 
 function onClickGalleryImg(e) {

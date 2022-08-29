@@ -13,10 +13,13 @@ const galleryEl = document.querySelector(".gallery");
 // Реалізувати закриття модалки по Ескейпу +
 
 // СТВОРЮЮ РОЗМІТКУ .......
-const creatGallery = galleryItems
-  .map(
-    ({ preview, original, description }) =>
-      ` <div class="gallery__item">
+renderHtml(galleryItems);
+
+function renderHtml(item) {
+  const creatGallery = item
+    .map(
+      ({ preview, original, description }) =>
+        ` <div class="gallery__item">
   <a class="gallery__link" href="large-image.jpg">
     <img
       class="gallery__image"
@@ -26,17 +29,19 @@ const creatGallery = galleryItems
     />
   </a>
 </div> `
-  )
-  .join("");
+    )
+    .join("");
 
-galleryEl.insertAdjacentHTML("afterbegin", creatGallery);
+  galleryEl.insertAdjacentHTML("afterbegin", creatGallery);
+}
 
 // Вішаю прослуховування Клік по картинкам
 galleryEl.addEventListener("click", onClickGalleryImg);
 
 function onClickGalleryImg(e) {
   e.preventDefault();
-  if (!e.target.classList.contains("gallery__image")) {
+
+  if (e.target.nodeName !== "IMG") {
     return;
   }
 
